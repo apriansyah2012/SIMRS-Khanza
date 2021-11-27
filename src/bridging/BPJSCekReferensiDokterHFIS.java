@@ -348,7 +348,12 @@ public final class BPJSCekReferensiDokterHFIS extends javax.swing.JDialog {
             if(nameNode.path("code").asText().equals("1")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+<<<<<<< HEAD
                 if(response.isArray()){
+=======
+                //response = root.path("response");
+                if(response.path("list").isArray()){
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                     i=1;
                     for(JsonNode list:response){
                         if(list.path("namadokter").asText().toLowerCase().contains(poli.toLowerCase())||

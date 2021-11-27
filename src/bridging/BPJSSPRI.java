@@ -979,6 +979,11 @@ public class BPJSSPRI extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
+<<<<<<< HEAD
+=======
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("noSPRI");
+                //response = root.path("response").path("noSPRI");
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                 if(nameNode.path("code").asText().equals("200")){
                     response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("noSPRI");
                     //response = root.path("response").path("noSPRI");

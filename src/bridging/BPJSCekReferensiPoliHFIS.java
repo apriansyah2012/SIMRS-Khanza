@@ -355,7 +355,11 @@ public final class BPJSCekReferensiPoliHFIS extends javax.swing.JDialog {
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");
+<<<<<<< HEAD
                 if(response.isArray()){
+=======
+                if(response.path("list").isArray()){
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                     i=1;
                     for(JsonNode list:response){
                         if(list.path("nmpoli").asText().toLowerCase().contains(poli.toLowerCase())||

@@ -2996,8 +2996,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     utc=String.valueOf(api.GetUTCdatetimeAsString());
                     headers.add("X-Timestamp",utc);
                     headers.add("X-Signature",api.getHmac(utc));
+<<<<<<< HEAD
                     headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
                     URL = link+"/SEP/2.0/update";	
+=======
+                    URL = link+"/SEP/2.0/Update";	
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                     requestJson ="{" +
                                   "\"request\":{" +
                                         "\"t_sep\":{" +
@@ -3049,7 +3053,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
+<<<<<<< HEAD
                     JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+=======
+                    response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                    //response = root.path("response");
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                     if(nameNode.path("code").asText().equals("200")){
                         Sequel.mengedit("bridging_sep",
                              "no_sep=?","no_rawat=?,catatan=?,diagawal=?,nmdiagnosaawal=?,kdpolitujuan=?,nmpolitujuan=?,klsrawat=?,klsnaik=?,pembiayaan=?,"+
@@ -3401,6 +3410,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
+<<<<<<< HEAD
+=======
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                 if(nameNode.path("code").asText().equals("200")){
                     Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                          Valid.SetTgl(TanggalPulang.getSelectedItem()+"")+" "+TanggalPulang.getSelectedItem().toString().substring(11,19),
@@ -3484,7 +3498,13 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
+<<<<<<< HEAD
                 //System.out.println("message : "+nameNode.path("message").asText());
+=======
+                System.out.println("message : "+nameNode.path("message").asText());
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -3592,6 +3612,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
+<<<<<<< HEAD
+=======
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -3676,6 +3701,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
+<<<<<<< HEAD
+=======
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                //response = root.path("response");
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                 if(nameNode.path("code").asText().equals("200")){
                     response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                     //response = root.path("response");
@@ -3915,7 +3945,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 if(nameNode.path("message").asText().equals("Sukses")){
                     response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                     //response = root.path("response");
+<<<<<<< HEAD
                     
+=======
+                    Catatan.setText(response.path("catatan").asText());
+                    NmPenyakit.setText(response.path("diagnosa").asText());
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                     if(response.path("jnsPelayanan").asText().toLowerCase().contains("inap")){
                         JenisPelayanan.setSelectedIndex(0);
                     }else{
@@ -5250,7 +5285,13 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
+<<<<<<< HEAD
             JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+=======
+            System.out.println("message : "+nameNode.path("message").asText());
+            response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
+            //response = root.path("response").path("sep").path("noSep");
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
             if(nameNode.path("code").asText().equals("200")){
                  response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("sep").path("noSep");
                  //response = root.path("response").path("sep").path("noSep");

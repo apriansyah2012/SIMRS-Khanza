@@ -66,6 +66,10 @@ public class BPJSCekNoKartu {
             informasi="";
             if(nameNode.path("code").asText().equals("200")){
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+<<<<<<< HEAD
+=======
+                //response = root.path("response");
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                 nik=response.path("peserta").path("nik").asText();
                 nama=response.path("peserta").path("nama").asText();
                 cobnmAsuransi=response.path("peserta").path("cob").path("nmAsuransi").asText();

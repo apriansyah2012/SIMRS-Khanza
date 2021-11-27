@@ -706,8 +706,8 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
                              "}";
                 requestEntity = new HttpEntity(requestJson,headers);
                 URL = link+"/jadwaldokter/updatejadwaldokter";	
-                System.out.println(URL);
-                //System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                //System.out.println(URL);
+                System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 nameNode = root.path("metadata");
                 if(nameNode.path("code").asText().equals("200")){
@@ -845,14 +845,23 @@ public final class BPJSCekReferensiJadwalHFIS extends javax.swing.JDialog {
 	    headers.add("user_key",koneksiDB.USERKEYAPIMOBILEJKN());
             requestEntity = new HttpEntity(headers);
             URL = link+"/jadwaldokter/kodepoli/"+KdPoli.getText()+"/tanggal/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
+<<<<<<< HEAD
             System.out.println(URL);
+=======
+            //System.out.println(URL);
+            System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metadata");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                 //response = root.path("response");
+<<<<<<< HEAD
                 if(response.isArray()){
+=======
+                if(response.path("list").isArray()){
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                     i=1;
                     for(JsonNode list:response){
                         tabMode.addRow(new Object[]{

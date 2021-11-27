@@ -348,7 +348,11 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
+<<<<<<< HEAD
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+=======
+               response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+>>>>>>> e49bd6058169db643f4d1b9c3026a658491e9dda
                 //response = root.path("response");
                 if(response.path("diagnosa").isArray()){
                     i=1;
